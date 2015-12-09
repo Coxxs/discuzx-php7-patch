@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: function_followcode.php 34308 2014-01-20 09:45:13Z hypowang $
+ *      $Id: function_followcode.php 35665 2015-11-06 04:09:22Z nemohou $
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -148,12 +148,12 @@ function followcode($message, $tid = 0, $pid = 0, $length = 0, $allowimg = true)
 	}
 
 	if(strpos($msglower, '[/img]') !== FALSE) {
-		$message = preg_replace_callback("/\[img\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", function ($matches) use ($extra) {
-			return fparseimg($matches[1], $extra);
+		$message = preg_replace_callback("/\[img\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", function ($matches) use ($extra, $allowimg) {
+			return $allowimg ? fparseimg($matches[1], $extra) : '';
 		}
 		, $message);
-		$message = preg_replace_callback("/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", function ($matches) use ($extra) {
-			return fparseimg($matches[3], $extra);
+		$message = preg_replace_callback("/\[img=(\d{1,4})[x|\,](\d{1,4})\]\s*([^\[\<\r\n]+?)\s*\[\/img\]/is", function ($matches) use ($extra, $allowimg) {
+			return $allowimg ? fparseimg($matches[3], $extra) : '';
 		}
 		, $message);
 	}
@@ -417,8 +417,15 @@ function fparseaudio($url) {
 function fmakeflv($flv) {
 	$randomid = 'video_'.random(3);
 	$flv = is_array($flv) ? $flv : array('flv' => $flv);
+	if(!preg_match("/^((https?){1}:\/\/|www\.)[^\[\"']+$/i", $flv['flv'])) {
+		return fcodedisp('', 'video');
+	}
 	if(!empty($flv['imgurl'])) {
-		$html = '<table class="mtm" title="'.lang('space', 'follow_click_play').'" onclick="javascript:showFlash(\'flash\', \''.$flv['flv'].'\', this, \''.$randomid.'\');"><tr><td class="vdtn hm" style="background: url('.$flv['imgurl'].') no-repeat;    border: 1px solid #CDCDCD; cursor: pointer; height: 95px; width: 126px;"><img src="'.IMGDIR.'/vds.png" alt="'.lang('space', 'follow_click_play').'" />	</td></tr></table>';
+		if(!preg_match("/^((https?){1}:\/\/|www\.)[^\[\"']+$/i", $flv['imgurl'])) {
+			$html = '';
+		} else {
+			$html = '<table class="mtm" title="'.lang('space', 'follow_click_play').'" onclick="javascript:showFlash(\'flash\', \''.$flv['flv'].'\', this, \''.$randomid.'\');"><tr><td class="vdtn hm" style="background: url('.$flv['imgurl'].') no-repeat;    border: 1px solid #CDCDCD; cursor: pointer; height: 95px; width: 126px;"><img src="'.IMGDIR.'/vds.png" alt="'.lang('space', 'follow_click_play').'" />	</td></tr></table>';
+		}
 	} else {
 		$html = '<img src="'.IMGDIR.'/vd.gif" alt="'.lang('space', 'follow_click_play').'" onclick="javascript:showFlash(\'flash\', \''.$flv['flv'].'\', this, \''.$randomid.'\');" class="tn" style="cursor: pointer;" />';
 	}

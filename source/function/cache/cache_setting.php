@@ -274,12 +274,12 @@ function build_cache_setting() {
 			//Coxxs
 			$data['watermarktext']['color'][$k] = preg_replace_callback('/#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/', 
 				function ($matches) {
-            		return $matches[1].','.$matches[2].','.$matches[3];
+            		return hexdec($matches[1]).','.hexdec($matches[2]).','.hexdec($matches[3]);
         		}
 				, $data['watermarktext']['color'][$k]);
 			$data['watermarktext']['shadowcolor'][$k] = preg_replace_callback('/#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/', 
 				function ($matches) {
-            		return $matches[1].','.$matches[2].','.$matches[3];
+            		return hexdec($matches[1]).','.hexdec($matches[2]).','.hexdec($matches[3]);
         		}
         		, $data['watermarktext']['shadowcolor'][$k]);
 			//Coxxs

@@ -114,7 +114,7 @@ class template {
 
 		$template = preg_replace("/\{template\s+(\w+?)\}/is", "<? include \$this->gettpl('\\1');?>", $template);
 		$template = preg_replace_callback("/\{template\s+(.+?)\}/is", function ($matches) {
-			return $this->stripvtag('<? include \$this->gettpl('.$matches[1].'); ?>');
+			return $this->stripvtag('<? include $this->gettpl('.$matches[1].'); ?>');
 		}, $template);
 
 
@@ -141,7 +141,7 @@ class template {
 	}
 
 	function stripvtag($s) {
-		return preg_replace("/$this->vtag_regexp/is", "\\1", str_replace("\\\"", '"', $s));
+		return preg_replace("/$this->vtag_regexp/is", "\\1", $s);
 	}
 
 	function loopsection($arr, $k, $v, $statement) {

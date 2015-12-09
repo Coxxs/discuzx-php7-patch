@@ -362,6 +362,14 @@ if($operation == 'filecheck') {
 
 	$settingnew = $_GET['settingnew'];
 	if(!empty($_GET['previewthumb'])) {
+		if(!is_dir($settingnew['imageimpath'])) {
+			$settingnew['imageimpath'] = '';
+		} else {
+			$settingnew['imageimpath'] = str_replace('\\', '/', $settingnew['imageimpath']);
+			if(!preg_match('/^[\!@#\$%\^&\(\)_\+\-\=\{\}\[\];\',\.\/\:\w\s]+$/', $settingnew['imageimpath'])) {
+				$settingnew['imageimpath'] = '';
+			}
+		}
 		$_G['setting']['imagelib'] = $settingnew['imagelib'];
 		$_G['setting']['imageimpath'] = $settingnew['imageimpath'];
 		$_G['setting']['thumbwidth'] = $settingnew['thumbwidth'];
