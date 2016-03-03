@@ -4,6 +4,12 @@
 
 博客：[coxxs.me](http://coxxs.me)
 
+### 重要提示
+
+Discuz! Fans 发布的 Discuz! F 已兼容PHP7，并会继续进行维护，推荐使用 Discuz! F。本补丁将不再继续开发。
+
+Discuz! F 官方网站：[discuzf.com](http://discuzf.com)
+
 ### 说明
 
 本补丁修复了Discuz在PHP7下的以下问题。
