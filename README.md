@@ -1,16 +1,16 @@
-## Discuz X3.2 兼容 PHP7 PATCH
+# Discuz X3.2 兼容 PHP7 PATCH
 
 作者：Coxxs
 
 博客：[coxxs.me](http://coxxs.me)
 
-### 重要提示
+## 重要提示
 
 Discuz! Fans 发布的 Discuz! F 已兼容PHP7，并会继续进行维护，推荐需要PHP7支持的用户使用 Discuz! F。本补丁将不再继续开发。
 
 Discuz! F 官方网站：[discuzf.com](http://discuzf.com)
 
-### 说明
+## 说明
 
 本补丁修复了Discuz在PHP7下的以下问题。
  * 无法安装;
