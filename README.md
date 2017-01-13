@@ -6,9 +6,9 @@
 
 ## 重要提示
 
-Discuz! Fans 发布的 Discuz! F 已兼容 PHP 7 ，并会继续进行维护，推荐需要 PHP 7 支持的用户使用 Discuz! F。**本补丁将不再继续开发维护。**
+Discuz! X 3.3 已兼容 PHP 7.1，**本补丁将不再继续开发维护。**
 
-Discuz! F 官方网站：[discuzf.com](http://discuzf.com)
+Discuz! 官方下载：http://www.discuz.net/forum-10-1.html
 
 ## 说明
 
