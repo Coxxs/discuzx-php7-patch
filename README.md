@@ -1,9 +1,5 @@
 # Discuz X3.2 兼容 PHP 7.0 PATCH
 
-作者：Coxxs
-
-博客：[coxxs.me](http://coxxs.me)
-
 ## 重要提示
 
 Discuz! X3.3 及以上版本已兼容 PHP 7.1，**本补丁将不再继续开发维护。**
